@@ -1,12 +1,11 @@
 import os
-import langchain
+import gradio as gr
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.chains import ConversationalRetrievalChain
 from langchain.chat_models import ChatOpenAI
 from langchain.document_loaders import PyPDFLoader
-import gradio as gr
 import fitz
 from PIL import Image
 
@@ -15,6 +14,8 @@ count = 0
 n = 0
 chat_history = []
 chain = ''
+
+
 
 # Function to set the OpenAI API key
 def set_api_key(api_key):
@@ -72,7 +73,6 @@ def render_file(file):
     global n
     doc = fitz.open(file.name)
     page = doc[n]
-    # Render the page as a PNG image with a resolution of 300 DPI
     pix = page.get_pixmap(matrix=fitz.Matrix(300 / 72, 300 / 72))
     image = Image.frombytes('RGB', [pix.width, pix.height], pix.samples)
     return image

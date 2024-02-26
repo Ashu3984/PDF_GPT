@@ -1,4 +1,5 @@
 import gradio as gr
+import os
 
 def interface():
     with gr.Blocks(title= " PDF Chatbot",theme = "Soft") as demo:
@@ -6,17 +7,16 @@ def interface():
             with gr.Row():
                 with gr.Column(scale=0.8):
                     api_key = gr.Textbox(
-                        placeholder='Enter your OpenAI API key',
-                        show_label=False,
-                        interactive=True,
-                    container=False)
+                        label='Enter your OpenAI API key',
+                    type='password'
+                    )
                     
                 with gr.Column(scale=0.2):
                     change_api_key = gr.Button('Update API Key')
 
             with gr.Row():
-                chatbot = gr.Chatbot(value=[], elem_id='chatbot', height=680)
-                show_img = gr.Image(label='PDF Preview', tool='select', height=680)
+                chatbot = gr.Chatbot(value=[], elem_id='chatbot', height=500)
+                show_img = gr.Image(label='PDF Preview', height=500)
 
         with gr.Row():
             with gr.Column(scale=0.60):
@@ -38,3 +38,5 @@ if __name__ == '__main__':
     demo, api_key, change_api_key, chatbot, show_img, text_input, submit_btn, upload_btn = interface()
     demo.queue()
     demo.launch()
+
+    
