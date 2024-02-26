@@ -9,7 +9,7 @@ This is a web application built using Gradio and ChatGPT that allows users to up
 - OpenAI API
 - ChromaDB
 
-##Features
+## Features
 - PDF Upload: Users can upload any PDF document directly into the application.
 - Question Input: Users can input questions related to the content of the uploaded PDF document.
 - ChatGPT Integration: The application uses ChatGPT to understand and answer questions asked by users.
